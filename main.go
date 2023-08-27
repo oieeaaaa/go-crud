@@ -1,11 +1,12 @@
 package main
 
 import (
-	"html/template"
-
 	"github.com/gin-gonic/gin"
 	"github.com/oieeaaaa/go-crud/controllers"
 	"github.com/oieeaaaa/go-crud/initializers"
+	home "github.com/oieeaaaa/go-crud/views"
+	"github.com/oieeaaaa/go-crud/views/pages/about"
+	"github.com/oieeaaaa/go-crud/views/pages/profile"
 )
 
 func init() {
@@ -18,7 +19,6 @@ func main() {
 
   // ==================== API ====================
 
-  // routes
   r.POST("/users/search", controllers.SearchUser)
   /* r.POST("/user", controllers.CreateUser)
   r.PUT("/user/:id", controllers.UpdateUser)
@@ -30,24 +30,11 @@ func main() {
 
   // ==================== HTML ====================
 
-  // serve html
-	r.LoadHTMLGlob("templates/*")
-
-  // Html nested templates
-  tmpl := make(map[string]*template.Template)
-  tmpl["about.html"] = template.Must(template.ParseFiles("templates/base.html", "templates/about.html"))
-  tmpl["profile.html"] = template.Must(template.ParseFiles("templates/base.html", "templates/profile.html"))
-
-  // Html routes
-  r.GET("/about", func(c *gin.Context) {
-    tmpl["about.html"].ExecuteTemplate(c.Writer, "base", nil)
-  })
-
-  r.GET("/profile", func(c *gin.Context) {
-    tmpl["profile.html"].ExecuteTemplate(c.Writer, "base", nil)
-  })
-
-  r.Run() // listen and serve on 0.0.0.0:8080
+  r.GET("/", home.Render)
+  r.GET("/about", about.Render)
+  r.GET("/profile", profile.Render)
 
   // ==================== HTML ====================
+
+  r.Run() // listen and serve on 0.0.0.0:8080
 }
