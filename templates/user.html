@@ -1,0 +1,44 @@
+{{ block "userContent" . }}
+  <li>
+    <p>{{ .Name }}</p>
+    <p>{{ .Email }}</p>
+  </li>
+{{ end }}
+
+{{ block "userIndicator" . }}
+  <span class="loading htmx-indicator"> 
+    Loading...
+  </span> 
+{{ end }}
+
+{{ block "userSearchResults" . }}
+  <ul class="space-y-4" id="users">
+    {{ range .users }}
+      {{ template "userContent" . }}
+    {{ end }}
+  </ul>
+{{ end }}
+
+{{ define "users" }}
+  <div class="grid place-content-center my-4">
+    <input 
+      class="border rounded px-2 py-1"
+      type="text" 
+      name="search" 
+      placeholder="Search" 
+      hx-post="/users/search" 
+      hx-trigger="keyup delay:500ms"
+      hx-target="#users"
+      hx-indicator=".loading"
+    >
+    {{ template "userIndicator" . }}
+
+    {{ template "userSearchResults" . }}
+  </div>
+{{ end }}
+
+{{ define "usersNotFound" }}
+  <div>
+    No users found.
+  </div>
+{{ end }}
