@@ -8,7 +8,7 @@ import (
 
 var view = template.Must(template.ParseFiles(
   "views/layout/base.html",
-  "views/home.html",
+  "views/pages/home/home.html",
 
   "views/partials/_modal.html",
 ))

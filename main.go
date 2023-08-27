@@ -1,11 +1,10 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/oieeaaaa/go-crud/controllers"
 	"github.com/oieeaaaa/go-crud/initializers"
-	home "github.com/oieeaaaa/go-crud/views"
 	"github.com/oieeaaaa/go-crud/views/pages/about"
+	"github.com/oieeaaaa/go-crud/views/pages/home"
 	"github.com/oieeaaaa/go-crud/views/pages/profile"
 )
 
@@ -15,7 +14,7 @@ func init() {
 }
 
 func main() {
-  r := gin.Default()
+  r := initializers.Router()
 
   // ==================== API ====================
 
@@ -26,15 +25,15 @@ func main() {
   r.GET("/users", controllers.GetUsers)
   r.DELETE("/user/:id", controllers.DeleteUser) */
 
-  // ==================== API ====================
-
   // ==================== HTML ====================
 
   r.GET("/", home.Render)
   r.GET("/about", about.Render)
   r.GET("/profile", profile.Render)
 
-  // ==================== HTML ====================
+  // ==================== STATIC ====================
+
+  r.Static("/assets", "./assets")
 
   r.Run() // listen and serve on 0.0.0.0:8080
 }
