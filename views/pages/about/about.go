@@ -10,6 +10,7 @@ var view = template.Must(template.ParseFiles(
   "views/layout/base.html",
   "views/pages/about/about.html",
 
+  "views/icons.html",
   "views/partials/_modal.html",
 ))
 
