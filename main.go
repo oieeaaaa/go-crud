@@ -5,10 +5,7 @@ import (
 
 	"github.com/oieeaaaa/go-crud/controllers"
 	"github.com/oieeaaaa/go-crud/initializers"
-	"github.com/oieeaaaa/go-crud/views/pages/about"
 	"github.com/oieeaaaa/go-crud/views/pages/home"
-	"github.com/oieeaaaa/go-crud/views/pages/profile"
-	"github.com/oieeaaaa/go-crud/views/pages/user"
 )
 
 func init() {
@@ -32,9 +29,6 @@ func main() {
   r.SetHTMLTemplate(html)
 
   r.GET("/", home.Render)
-  r.GET("/about", about.Render)
-  r.GET("/profile", profile.Render)
-  r.GET("/user", user.Render)
 
   // ==================== STATIC ====================
 

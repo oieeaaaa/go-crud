@@ -13,7 +13,6 @@ func init() {
 func main() {
   println("migrating stuff...")
 
-  initializers.DB.AutoMigrate(&models.User{})
   initializers.DB.AutoMigrate(&models.Thoughts{})
 
   println("done!")

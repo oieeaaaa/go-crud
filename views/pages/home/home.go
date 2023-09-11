@@ -12,7 +12,6 @@ var view = template.Must(template.ParseFiles(
   "views/pages/home/home.html",
 
   "views/icons.html",
-  "views/partials/_modal.html",
 ))
 
 func Render(c *gin.Context) {
