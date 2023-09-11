@@ -21,13 +21,9 @@ func main() {
 
   // ==================== API ====================
 
-  r.POST("/users/search", controllers.SearchUser)
+  r.GET("/thoughts", controllers.GetThoughts)
   r.POST("/thoughts", controllers.CreateThought)
-  /* r.POST("/user", controllers.CreateUser)
-  r.PUT("/user/:id", controllers.UpdateUser)
-  r.GET("/user/:id", controllers.GetUser)
-  r.GET("/users", controllers.GetUsers)
-  r.DELETE("/user/:id", controllers.DeleteUser) */
+  r.DELETE("/thoughts/:id", controllers.DeleteThought)
 
   // ==================== HTML ====================
 

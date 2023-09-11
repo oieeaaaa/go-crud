@@ -1,13 +1,30 @@
+<div 
+  hx-get="/thoughts" 
+  hx-target="[data-feed]" 
+  hx-swap="outerHTML"
+  hx-trigger="mouseenter once" 
+></div>
+
 {{ block "thoughts" . }}
-  <div data-feed>
+  <div 
+    data-feed 
+    hx-target="closest .thought"
+    hx-swap="outerHTML"
+    class="container divide-y divide-solid divide-gray-700" 
+  >
     {{ range .Thoughts }}
-      {{ template "thought" . }}
+    {{ template "thought" . }}
     {{ end }}
   </div>
 {{ end }}
 
 {{ block "thought" . }}
-  <div>
-    {{ .Say }}
+  <div class="thought">
+    <div class="thought-content py-4 flex justify-between items-center">
+      {{ .Say }}
+      <button class="underline" hx-delete="/thoughts/{{.ID}}">
+        delete
+      </button>
+    </div>
   </div>
 {{ end }}
