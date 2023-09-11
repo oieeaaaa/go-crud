@@ -3,9 +3,21 @@
 {{ end }}
 
 {{ define "body" }}
-  <div class="container mx-auto bg-primary">
-    index
+  <div class="container">
+    <form 
+      hx-target="[data-feed]" 
+      hx-swap="outerHTML"
+      hx-boost="true" 
+      action="/thoughts" 
+      hx-push-url="false"
+      method="post" 
+      class="p-1.5 h-12 bg-slate-800 m-4 border border-slate-700 rounded-full grid grid-cols-[1fr_auto] items-stretch gap-x-2"
+    >
+      <input name="Say" class="hover:bg-slate-700/75 focus:bg-slate-700/50 rounded-full px-2 bg-slate-700/50" type="text" placeholder="Quick Thoughts..." />
+      <button type="submit" class="hover:bg-slate-600 font-bold rounded-full px-4 bg-slate-700 inline-flex justify-center items-center">Send</button>
+    </form>
   </div>
 
-  {{ template "modal" . }}
+  {{ template "thoughts" . }}
 {{ end }}
+

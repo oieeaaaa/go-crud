@@ -1,3 +1,11 @@
+{{ define "head" }}
+  <title>Main</title>
+{{ end }}
+
+{{ define "body" }}
+  {{ template "users" }}
+{{ end }}
+
 {{ block "userContent" . }}
   <li>
     <p>{{ .Name }}</p>

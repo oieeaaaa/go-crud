@@ -6,7 +6,8 @@
   "scripts": {
     "start": "run-p css air",
     "css": "tailwindcss -o ./assets/styles.css --watch",
-    "air": "air"
+    "air": "air",
+    "migrate": "go run migrate/migrate.go"
   },
   "keywords": [],
   "author": "",

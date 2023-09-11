@@ -1,11 +1,14 @@
 package main
 
 import (
+	"html/template"
+
 	"github.com/oieeaaaa/go-crud/controllers"
 	"github.com/oieeaaaa/go-crud/initializers"
 	"github.com/oieeaaaa/go-crud/views/pages/about"
 	"github.com/oieeaaaa/go-crud/views/pages/home"
 	"github.com/oieeaaaa/go-crud/views/pages/profile"
+	"github.com/oieeaaaa/go-crud/views/pages/user"
 )
 
 func init() {
@@ -19,6 +22,7 @@ func main() {
   // ==================== API ====================
 
   r.POST("/users/search", controllers.SearchUser)
+  r.POST("/thoughts", controllers.CreateThought)
   /* r.POST("/user", controllers.CreateUser)
   r.PUT("/user/:id", controllers.UpdateUser)
   r.GET("/user/:id", controllers.GetUser)
@@ -27,9 +31,14 @@ func main() {
 
   // ==================== HTML ====================
 
+  html := template.Must(template.ParseGlob("views/partials/*.html"))
+
+  r.SetHTMLTemplate(html)
+
   r.GET("/", home.Render)
   r.GET("/about", about.Render)
   r.GET("/profile", profile.Render)
+  r.GET("/user", user.Render)
 
   // ==================== STATIC ====================
 

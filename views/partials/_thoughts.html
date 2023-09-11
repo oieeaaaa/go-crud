@@ -1,0 +1,13 @@
+{{ block "thoughts" . }}
+  <div data-feed>
+    {{ range .Thoughts }}
+      {{ template "thought" . }}
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ block "thought" . }}
+  <div>
+    {{ .Say }}
+  </div>
+{{ end }}

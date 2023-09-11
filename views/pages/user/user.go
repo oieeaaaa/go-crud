@@ -1,4 +1,4 @@
-package home
+package user
 
 import (
 	"text/template"
@@ -8,11 +8,7 @@ import (
 
 var view = template.Must(template.ParseFiles(
   "views/layout/base.html",
-  "views/partials/_thoughts.html",
-  "views/pages/home/home.html",
-
-  "views/icons.html",
-  "views/partials/_modal.html",
+  "views/pages/user/user.html",
 ))
 
 func Render(c *gin.Context) {
