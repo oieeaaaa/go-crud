@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.thought.htmx-swapping .thought-content {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.thought {
+  animation-name: fade-in;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

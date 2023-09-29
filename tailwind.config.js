@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     './views/**/*.{html,css}',
+    './client/**/*.css'
   ],
   theme: {
     extend: {
