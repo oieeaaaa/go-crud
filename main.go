@@ -20,6 +20,7 @@ func main() {
 
   r.GET("/thoughts", controllers.GetThoughts)
   r.POST("/thoughts", controllers.CreateThought)
+  r.PUT("/thoughts/:id", controllers.EditThought)
   r.DELETE("/thoughts/:id", controllers.DeleteThought)
 
   // ==================== HTML ====================
