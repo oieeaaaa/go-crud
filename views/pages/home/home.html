@@ -1,18 +1,12 @@
 {{ define "head" }}
   <title>Main</title>
-
-  <script type="module">
-    const yo = "yo";
-
-    console.log({ yo });
-  </script>
 {{ end }}
 
 {{ define "body" }}
   <div class="container">
     <form 
       hx-target="[data-feed]" 
-      hx-swap="outerHTML" 
+      hx-swap="beforeend" 
       hx-boost="true" 
       hx-push-url="false" 
       action="/thoughts" 

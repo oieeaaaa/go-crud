@@ -1,28 +1,30 @@
-<div 
-  hx-get="/thoughts" 
-  hx-target="[data-feed]" 
-  hx-swap="outerHTML"
-  hx-trigger="mouseenter once" 
-></div>
-
 {{ block "thoughts" . }}
   <div 
     data-feed 
-    hx-target="closest .thought"
-    hx-swap="outerHTML"
     class="container divide-y divide-solid divide-gray-700" 
   >
     {{ range .Thoughts }}
       {{ template "thought" . }}
     {{ end }}
+
+    <input name="OldSay" type="hidden" />
   </div>
 {{ end }}
 
 {{ block "thought" . }}
-  <div class="thought">
+  <div class="thought" hx-swap="outerHTML swap:300ms">
     <div class="thought-content py-4 flex justify-between items-center">
-      {{ .Say }}
-      <button class="underline" hx-delete="/thoughts/{{.ID}}">
+      <x-editable 
+        hx-include="[name='OldSay']" 
+        hx-put="/thoughts/{{.ID}}" 
+        hx-trigger="blur"
+        hx-target="closest .thought"
+        hx-swap="outerHTML"
+        contenteditable
+      >
+        {{ .Say }}
+      </x-editable>
+      <button class="underline" hx-delete="/thoughts/{{.ID}}" hx-target="closest .thought">
         delete
       </button>
     </div>
