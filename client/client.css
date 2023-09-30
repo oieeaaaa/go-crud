@@ -4,7 +4,7 @@
 
 .thought.htmx-swapping .thought-content {
   opacity: 0;
-  transition: opacity 1s ease-out;
+  transition: opacity 300ms ease-out;
 }
 
 .thought {
